@@ -1,0 +1,30 @@
+@use '../../../shared/helpers' as *;
+
+.list {
+	display: grid;
+	grid-gap: 8px;
+	counter-reset: item;
+	list-style-type: none;
+
+	@include screen-m {
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 32px 0px;
+	}
+}
+
+.item {
+	display: inline-flex;
+	gap: 8px;
+	font-size: 14px;
+
+	&::before {
+		content: counter(item, upper-alpha);
+		counter-increment: item;
+		color: var(--orange-100);
+		font-weight: 600;
+	}
+
+	@include screen-m {
+		font-size: 20px;
+	}
+}

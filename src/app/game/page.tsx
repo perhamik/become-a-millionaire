@@ -1,3 +1,5 @@
+import {QuestionScreen} from '@/src/widgets/QuestionScreen'
+
 export default function GamePage() {
-	return <></>
+	return <QuestionScreen />
 }

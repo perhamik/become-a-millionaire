@@ -1,0 +1,20 @@
+@use '../../shared/helpers' as *;
+
+.wrapper {
+	display: grid;
+	background-color: var(--black-5);
+	height: calc(var(--vh, 1vh) * 100);
+	width: 100%;
+	margin: 0;
+	padding: 1em;
+}
+
+.title {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--black-100);
+
+	@include if-mobile {
+		text-align: center;
+	}
+}

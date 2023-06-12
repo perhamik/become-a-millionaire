@@ -1,0 +1,125 @@
+@mixin applyColor($color) {
+	& {
+		&::before,
+		&::after {
+			background-color: $color;
+		}
+
+		& > .diamond {
+			border-color: $color;
+			&::before {
+				border-left-color: $color;
+				border-bottom-color: $color;
+			}
+
+			&::after {
+				border-right-color: $color;
+				border-bottom-color: $color;
+			}
+		}
+	}
+}
+
+.container {
+	$side: 2em;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+	padding: 0 $side;
+
+	&::before,
+	&::after {
+		transition: background-color 350ms linear;
+	}
+
+	& > .diamond {
+		&::before,
+		&::after {
+			transition: border-color 350ms linear;
+		}
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		height: 1px;
+		width: calc(#{$side} + 2px);
+		background-color: var(--black-40);
+	}
+
+	&::before {
+		left: 0;
+	}
+
+	&::after {
+		right: 0;
+	}
+
+	&:hover,
+	&[data-state='active'] {
+		@include applyColor(var(--orange-100));
+	}
+	&[data-state='correct'] {
+		@include applyColor(var(--green-100));
+	}
+	&[data-state='wrong'] {
+		@include applyColor(var(--red-100));
+	}
+}
+
+.diamond {
+	display: block;
+	position: relative;
+	white-space: nowrap;
+
+	padding: 0.75em 0 0.75em 0.5em;
+	margin-left: 1.6em;
+	margin-right: 1.6em;
+
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: var(--black-40);
+
+	&::before,
+	&::after {
+		border: 0 solid var(--black-40);
+	}
+
+	&::before,
+	&::after {
+		content: '';
+		display: inline-block;
+		position: absolute;
+
+		top: -50%;
+		bottom: 50%;
+	}
+
+	&::before {
+		left: -1.55em;
+		right: 0;
+
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+
+		transform: rotate(45deg);
+		transform-origin: 0% 100%;
+	}
+
+	&::after {
+		left: 0;
+		right: -1.55em;
+
+		transform: rotate(-45deg);
+		transform-origin: 100% 100%;
+
+		border-bottom-width: 1px;
+		border-right-width: 1px;
+	}
+}

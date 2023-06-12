@@ -1,4 +1,4 @@
-import {InitialScreen} from '@/src/features/InitialScreen'
+import {InitialScreen} from '@/src/widgets/InitialScreen'
 
 export default function Home() {
 	return <InitialScreen />
