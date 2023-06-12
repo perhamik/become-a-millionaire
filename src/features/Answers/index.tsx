@@ -7,15 +7,15 @@ import styles from './Answer.module.scss'
 
 export type AnswersProps = {
 	list: Array<string>
-	itemHandler: Function
+	selectEvent: Function
 }
 
-export const Answers = ({list, itemHandler}: AnswersProps) => {
+export const Answers = ({list, selectEvent}: AnswersProps) => {
 	return (
 		<ol className={styles.list}>
 			{list.map((item) => (
-				<Diamond key={item}>
-					<Answer text={item} handler={itemHandler} />
+				<Diamond key={item} cb={() => selectEvent(item)}>
+					<Answer text={item} />
 				</Diamond>
 			))}
 		</ol>

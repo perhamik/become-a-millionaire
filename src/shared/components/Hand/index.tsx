@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-import handIcon from '@/public/assets/hand.svg'
+import handIcon from '@/public/hand.svg'
 
 import styles from './Hand.module.scss'
 

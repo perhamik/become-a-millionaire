@@ -2,8 +2,8 @@
 
 import {useSelector} from 'react-redux'
 
-import {RootState} from '@/src/process/redux'
 import {Button, Hand} from '@/src/shared/components'
+import {RootState} from '@/src/shared/redux'
 
 import styles from './FinalScreen.module.scss'
 

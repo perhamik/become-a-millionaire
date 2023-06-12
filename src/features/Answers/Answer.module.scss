@@ -1,7 +1,8 @@
-@use '../../../shared/helpers' as *;
+@use '../../shared/helpers' as *;
 
 .list {
 	display: grid;
+	align-items: end;
 	grid-gap: 8px;
 	counter-reset: item;
 	list-style-type: none;
@@ -9,6 +10,7 @@
 	@include screen-m {
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 32px 0px;
+		align-content: end;
 	}
 }
 

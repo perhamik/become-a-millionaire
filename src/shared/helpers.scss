@@ -23,29 +23,20 @@ $screens: (
 	}
 }
 
+@mixin if-tablet {
+	@include max-screen(990px) {
+		@content;
+	}
+}
+
 @mixin screen-m {
 	@include min-screen(768px) {
 		@content;
 	}
 }
 
-// @mixin screen-s {
-// 	@include min-screen(map.get($screens, 's')) {
-// 		@content;
-// 	}
-// }
-// @mixin screen-m {
-// 	@include min-screen(map.get($screens, 'm')) {
-// 		@content;
-// 	}
-// }
-// @mixin screen-l {
-// 	@include min-screen(map.get($screens, 'l')) {
-// 		@content;
-// 	}
-// }
-// @mixin screen-xl {
-// 	@include min-screen(map.get($screens, 'xl')) {
-// 		@content;
-// 	}
-// }
+@mixin screen-l {
+	@include min-screen(990px) {
+		@content;
+	}
+}

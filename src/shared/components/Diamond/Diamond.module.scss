@@ -1,3 +1,5 @@
+@use '../../../shared/helpers' as *;
+
 @mixin applyColor($color) {
 	& {
 		&::before,
@@ -6,7 +8,11 @@
 		}
 
 		& > .diamond {
-			border-color: $color;
+			&,
+			& > :first-child {
+				border-color: $color;
+			}
+
 			&::before {
 				border-left-color: $color;
 				border-bottom-color: $color;
@@ -20,23 +26,81 @@
 	}
 }
 
+@mixin changeBG($color) {
+	& {
+		& > .diamond {
+			&,
+			& > :first-child,
+			&::before,
+			&::after {
+				background-color: $color;
+			}
+		}
+	}
+}
+
 .container {
-	$side: 2em;
+	&[data-size='sm'] {
+		--child-size: 14px;
+		--side-border-left: -1.3em;
+		--side-border-right: 1.7em;
+
+		@include if-mobile {
+			--child-size: 9pt;
+		}
+
+		.diamond {
+			min-width: 240px;
+			max-width: 240px;
+
+			& > :first-child {
+				padding: 8px 24px;
+			}
+		}
+	}
+
+	.diamond {
+		width: 70%;
+
+		& > * {
+			width: 100%;
+		}
+	}
+}
+
+.container {
+	--child-size: 26px;
+	--side-border-left: -1em;
+	--side-border-right: 1.2em;
+
+	@include if-mobile {
+		--child-size: 20px;
+
+		--side-border-left: -0.9em;
+		--side-border-right: 1.2em;
+	}
+
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	height: fit-content;
 	position: relative;
 	overflow: hidden;
-	padding: 0 $side;
+	padding: 0 1em;
+	font-size: 10px;
+	cursor: pointer;
 
 	&::before,
 	&::after {
-		transition: background-color 350ms linear;
+		transition: background-color 250ms linear;
 	}
 
 	& > .diamond {
+		&,
+		& > :first-child,
 		&::before,
 		&::after {
-			transition: border-color 350ms linear;
+			transition: border-color 250ms linear, color 250ms linear;
 		}
 	}
 
@@ -49,8 +113,9 @@
 		bottom: 0;
 		margin: auto;
 		height: 1px;
-		width: calc(#{$side} + 2px);
+		width: 40%;
 		background-color: var(--black-40);
+		pointer-events: none;
 	}
 
 	&::before {
@@ -61,34 +126,65 @@
 		right: 0;
 	}
 
-	&:hover,
-	&[data-state='active'] {
+	&:hover {
 		@include applyColor(var(--orange-100));
 	}
+
+	&[data-state='disabled'] {
+		@include applyColor(var(--black-40));
+		pointer-events: none;
+		color: var(--black-40);
+	}
+
+	&[data-state='current'] {
+		@include applyColor(var(--orange-100));
+		color: var(--orange-100);
+	}
+
+	&[data-state='active'] {
+		@include applyColor(var(--orange-100));
+		@include changeBG(var(--orange-5));
+	}
+
 	&[data-state='correct'] {
 		@include applyColor(var(--green-100));
+		@include changeBG(var(--green-5));
 	}
+
 	&[data-state='wrong'] {
 		@include applyColor(var(--red-100));
+		@include changeBG(var(--red-5));
 	}
 }
 
 .diamond {
+	font-size: var(--child-size);
 	display: block;
 	position: relative;
+	z-index: 5;
 	white-space: nowrap;
 
-	padding: 0.75em 0 0.75em 0.5em;
+	padding: 0;
+
 	margin-left: 1.6em;
 	margin-right: 1.6em;
 
-	border-width: 1px 0;
-	border-style: solid;
-	border-color: var(--black-40);
+	& > :first-child {
+		position: relative;
+		padding: 0.75em 0.5em;
+		border-width: 1px 0;
+		border-style: solid;
+		border-color: var(--black-40);
+		z-index: 10;
+		margin: 0 3px;
+		background-color: var(--white-100);
+	}
 
 	&::before,
 	&::after {
+		background-color: var(--white-100);
 		border: 0 solid var(--black-40);
+		pointer-events: none;
 	}
 
 	&::before,
@@ -96,27 +192,19 @@
 		content: '';
 		display: inline-block;
 		position: absolute;
-
-		top: -50%;
-		bottom: 50%;
+		inset: -50% 0 50% 0;
 	}
 
 	&::before {
-		left: -1.55em;
-		right: 0;
-
 		border-bottom-width: 1px;
 		border-left-width: 1px;
 
-		transform: rotate(45deg);
+		transform: translateX(var(--side-border-left)) rotate(45deg);
 		transform-origin: 0% 100%;
 	}
 
 	&::after {
-		left: 0;
-		right: -1.55em;
-
-		transform: rotate(-45deg);
+		transform: translateX(var(--side-border-right)) rotate(-45deg);
 		transform-origin: 100% 100%;
 
 		border-bottom-width: 1px;

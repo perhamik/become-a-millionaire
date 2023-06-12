@@ -1,0 +1,18 @@
+@use '../../shared/helpers' as *;
+
+.list {
+	display: flex;
+	flex-direction: column-reverse;
+	list-style: none;
+	pointer-events: none;
+	gap: 8px;
+}
+
+.step {
+	text-align: center;
+	font-size: 14px;
+
+	@include screen-m {
+		font-size: 20px;
+	}
+}
