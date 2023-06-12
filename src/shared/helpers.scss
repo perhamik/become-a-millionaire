@@ -1,0 +1,51 @@
+$screens: (
+	's': 510px,
+	'm': 768px,
+	'l': 990px,
+	'xl': 1200px,
+);
+
+@mixin min-screen($width) {
+	@media screen and (min-width: $width) {
+		@content;
+	}
+}
+
+@mixin max-screen($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+@mixin if-mobile {
+	@include max-screen(510px) {
+		@content;
+	}
+}
+
+@mixin screen-m {
+	@include min-screen(768px) {
+		@content;
+	}
+}
+
+// @mixin screen-s {
+// 	@include min-screen(map.get($screens, 's')) {
+// 		@content;
+// 	}
+// }
+// @mixin screen-m {
+// 	@include min-screen(map.get($screens, 'm')) {
+// 		@content;
+// 	}
+// }
+// @mixin screen-l {
+// 	@include min-screen(map.get($screens, 'l')) {
+// 		@content;
+// 	}
+// }
+// @mixin screen-xl {
+// 	@include min-screen(map.get($screens, 'xl')) {
+// 		@content;
+// 	}
+// }
