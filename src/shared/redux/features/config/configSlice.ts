@@ -25,7 +25,7 @@ const initialState: ConfigState = {
 }
 
 export const fetchConfig = createAsyncThunk('api/config', async () => {
-	const response = await fetch('http://localhost:3000/api/config')
+	const response = await fetch('/api/config')
 	const json = await response.json()
 	return json as ConfigState
 })
