@@ -9,7 +9,14 @@ export {Providers} from './provider'
 export type {RootState} from './store'
 export {store}
 
-export {counterSlice, increment, reset} from './features/counter/counterSlice'
+export {
+	counterSlice,
+	increment,
+	reset,
+	setInitPage,
+	setGamePage,
+	setFinalPage,
+} from './features/counter/counterSlice'
 export {configSlice, fetchConfig} from './features/config/configSlice'
 export type {TConfig} from './features/config/configSlice'
 

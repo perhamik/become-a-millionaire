@@ -1,6 +1,5 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
 import {useMemo, useState} from 'react'
 
 import {Answers} from '@/src/features/Answers'
@@ -9,6 +8,8 @@ import {Hamburger} from '@/src/shared/components'
 import {
 	RootState,
 	increment,
+	setFinalPage,
+	setInitPage,
 	useAppDispatch,
 	useAppSelector,
 } from '@/src/shared/redux'
@@ -18,7 +19,6 @@ import styles from './QuestionScreen.module.scss'
 export const QuestionScreen = () => {
 	const dispatch = useAppDispatch()
 	const config = useAppSelector((state: RootState) => state.config.data)
-	const router = useRouter()
 	const [questions, setQuestions] = useState(() => config.questions)
 
 	const question = useMemo(
@@ -40,14 +40,14 @@ export const QuestionScreen = () => {
 			dispatch(increment())
 			setQuestions(() => leftQuestions)
 
-			!leftQuestions.length && router.push('/end')
+			!leftQuestions.length && dispatch(setFinalPage())
 		}
 
-		!currentAnswer.isCorrect && router.push('/end')
+		!currentAnswer.isCorrect && dispatch(setFinalPage())
 	}
 
 	if (!question) {
-		!config.questions.length && router.push('/')
+		!config.questions.length && dispatch(setInitPage())
 		return null
 	}
 
