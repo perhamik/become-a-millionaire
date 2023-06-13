@@ -10,8 +10,7 @@
 		"postlint": "tsc",
 		"start": "next start",
 		"prebuild": "npm run lint",
-		"build": "next build",
-		"export": "next export"
+		"build": "next build"
 	},
 	"dependencies": {
 		"next": "13.4.4",
