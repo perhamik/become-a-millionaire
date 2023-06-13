@@ -1,7 +1,5 @@
-import {useSelector} from 'react-redux'
-
 import {Diamond} from '@/src/shared/components'
-import {RootState} from '@/src/shared/redux'
+import {RootState, useAppSelector} from '@/src/shared/redux'
 
 import styles from './Earn.module.scss'
 import {EarnStep} from './EarnStep'
@@ -21,7 +19,7 @@ export const formatEarnContent = (value: number): string =>
 	_FORMAT.format(value)
 
 export const Earn = ({list}: EarnProps) => {
-	const count = useSelector((state: RootState) => state.counter.value)
+	const count = useAppSelector((state: RootState) => state.counter.value)
 
 	return (
 		<ul className={styles.list}>

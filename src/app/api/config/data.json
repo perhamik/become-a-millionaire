@@ -1,0 +1,262 @@
+{
+	"earning": [
+		500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000,
+		1000000
+	],
+	"questions": [
+		{
+			"title": "What does the 'MP' stand for in MP3?",
+			"answers": [
+				{
+					"title": "Moving Picture",
+					"isCorrect": true
+				},
+				{
+					"title": "Music Player",
+					"isCorrect": false
+				},
+				{
+					"title": "Multi Pass",
+					"isCorrect": false
+				},
+				{
+					"title": "Micro Point",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "When Gmail first launched, how much storage did it provide for your email?",
+			"answers": [
+				{
+					"title": "Unlimited",
+					"isCorrect": false
+				},
+				{
+					"title": "512 MB",
+					"isCorrect": false
+				},
+				{
+					"title": "1 GB",
+					"isCorrect": true
+				},
+				{
+					"title": "5 GB",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "The series of the Intel HD graphics generation succeeding that of the 5000 and 6000 series (Broadwell) is called:",
+			"answers": [
+				{
+					"title": "HD Graphics 500",
+					"isCorrect": true
+				},
+				{
+					"title": "HD Graphics 700",
+					"isCorrect": false
+				},
+				{
+					"title": "HD Graphics 600",
+					"isCorrect": false
+				},
+				{
+					"title": "HD Graphics 7000",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "Which computer language would you associate Django framework with?",
+			"answers": [
+				{
+					"title": "Java",
+					"isCorrect": false
+				},
+				{
+					"title": "C#",
+					"isCorrect": false
+				},
+				{
+					"title": "C++",
+					"isCorrect": false
+				},
+				{
+					"title": "Python",
+					"isCorrect": true
+				}
+			]
+		},
+		{
+			"title": "What does CPU stand for?",
+			"answers": [
+				{
+					"title": "Central Process Unit",
+					"isCorrect": false
+				},
+				{
+					"title": "Central Processing Unit",
+					"isCorrect": true
+				},
+				{
+					"title": "Computer Personal Unit",
+					"isCorrect": false
+				},
+				{
+					"title": "Central Processor Unit",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "What does GHz stand for?",
+			"answers": [
+				{
+					"title": "Gigahotz",
+					"isCorrect": false
+				},
+				{
+					"title": "Gigahetz",
+					"isCorrect": false
+				},
+				{
+					"title": "Gigahertz",
+					"isCorrect": true
+				},
+				{
+					"title": "Gigahatz",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "What is the most preferred image format used for logos in the Wikimedia database?",
+			"answers": [
+				{
+					"title": ".png",
+					"isCorrect": false
+				},
+				{
+					"title": ".svg",
+					"isCorrect": true
+				},
+				{
+					"title": ".jpeg",
+					"isCorrect": false
+				},
+				{
+					"title": ".gif",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "HTML is what type of language?",
+
+			"answers": [
+				{
+					"title": "Macro Language",
+					"isCorrect": false
+				},
+				{
+					"title": "Markup Language",
+					"isCorrect": true
+				},
+				{
+					"title": "Programming Language",
+					"isCorrect": false
+				},
+				{
+					"title": "Scripting Language",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "What does LTS stand for in the software market?",
+			"answers": [
+				{
+					"title": "Long Term Support",
+					"isCorrect": true
+				},
+				{
+					"title": "Long Taco Service",
+					"isCorrect": false
+				},
+				{
+					"title": "Ludicrous Transfer Speed",
+					"isCorrect": false
+				},
+				{
+					"title": "Ludicrous Turbo Speed",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "In web design, what does CSS stand for?",
+
+			"answers": [
+				{
+					"title": "Counter Strike: Source",
+					"isCorrect": false
+				},
+				{
+					"title": "Cascading Style Sheet",
+					"isCorrect": true
+				},
+				{
+					"title": "Corrective Style Sheet",
+					"isCorrect": false
+				},
+				{
+					"title": "Computer Style Sheet",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "How long is an IPv4 address?",
+			"answers": [
+				{
+					"title": "32 bits",
+					"isCorrect": true
+				},
+				{
+					"title": "64 bits",
+					"isCorrect": false
+				},
+				{
+					"title": "128 bits",
+					"isCorrect": false
+				},
+				{
+					"title": "128 bytes",
+					"isCorrect": false
+				}
+			]
+		},
+		{
+			"title": "How long is an IPv6 address?",
+			"answers": [
+				{
+					"title": "32 bits",
+					"isCorrect": false
+				},
+				{
+					"title": "64 bits",
+					"isCorrect": false
+				},
+				{
+					"title": "128 bits",
+					"isCorrect": true
+				},
+				{
+					"title": "128 bytes",
+					"isCorrect": false
+				}
+			]
+		}
+	]
+}

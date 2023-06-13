@@ -1,5 +1,5 @@
 import {InitialScreen} from '@/src/widgets/InitialScreen'
 
-export default function Home() {
+export default async function Home() {
 	return <InitialScreen />
 }

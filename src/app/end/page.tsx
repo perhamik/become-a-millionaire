@@ -1,5 +1,5 @@
 import {FinalScreen} from '@/src/widgets/FinalScreen'
 
-export default function EndGame() {
+export default async function EndGame() {
 	return <FinalScreen />
 }
