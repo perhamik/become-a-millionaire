@@ -1,7 +1,14 @@
 'use client'
 
 import {createSlice} from '@reduxjs/toolkit'
-import type {CaseReducer} from '@reduxjs/toolkit'
+
+import {
+	_increment,
+	_reset,
+	_setFinalPage,
+	_setGamePage,
+	_setInitPage,
+} from './reducers'
 
 export interface CounterState {
 	value: number
@@ -11,26 +18,6 @@ export interface CounterState {
 const initialState: CounterState = {
 	page: 0,
 	value: 0,
-}
-
-const _increment: CaseReducer<CounterState> = (state) => {
-	state.value += 1
-}
-
-const _reset: CaseReducer<CounterState> = (state) => {
-	state.value = 0
-}
-
-const _setInitPage: CaseReducer<CounterState> = (state) => {
-	state.page = 0
-}
-
-const _setGamePage: CaseReducer<CounterState> = (state) => {
-	state.page = 1
-}
-
-const _setFinalPage: CaseReducer<CounterState> = (state) => {
-	state.page = 2
 }
 
 export const counterSlice = createSlice({

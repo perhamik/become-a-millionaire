@@ -1,29 +1,20 @@
 'use client'
 
-import {useMemo} from 'react'
+import {useSelector} from 'react-redux'
 
 import {Button, Hand} from '@/src/shared/components'
 import {
-	RootState,
+	incomeSelect,
 	reset,
 	setGamePage,
 	useAppDispatch,
-	useAppSelector,
 } from '@/src/shared/redux'
 
 import styles from './FinalScreen.module.scss'
 
 export const FinalScreen = () => {
 	const dispatch = useAppDispatch()
-	const total = useAppSelector((state: RootState) => state.counter.value)
-	const earning = useAppSelector(
-		(state: RootState) => state.config.data.earning,
-	)
-	const income = useMemo(
-		() => (total > 0 ? earning.at(total - 1) : 0),
-		[total, earning],
-	)
-
+	const income = useSelector(incomeSelect)
 	return (
 		<div className={styles.wrapper}>
 			<Hand />

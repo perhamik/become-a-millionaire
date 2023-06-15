@@ -13,10 +13,6 @@ export const InitialScreen = () => {
 	getConfig()
 	dispatch(reset())
 
-	useWindowSize(() => {
-		setVH()
-	})
-
 	return (
 		<div className={styles.wrapper}>
 			<Hand />
