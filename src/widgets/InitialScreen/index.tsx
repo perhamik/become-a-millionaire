@@ -1,9 +1,7 @@
 'use client'
 
 import {Button, Hand} from '@/src/shared/components'
-import useWindowSize from '@/src/shared/hooks/useWindowSize'
 import {getConfig, reset, setGamePage, useAppDispatch} from '@/src/shared/redux'
-import {setVH} from '@/src/shared/utils'
 
 import styles from './InitialScreen.module.scss'
 
