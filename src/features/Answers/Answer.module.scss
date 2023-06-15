@@ -2,8 +2,9 @@
 
 .list {
 	display: grid;
-	align-items: end;
-	grid-gap: 8px;
+	grid-auto-rows: 56px;
+	grid-gap: 8px 0px;
+	align-self: end;
 	counter-reset: item;
 	list-style-type: none;
 
@@ -11,6 +12,7 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 32px 0px;
 		align-content: end;
+		grid-auto-rows: 72px;
 	}
 }
 

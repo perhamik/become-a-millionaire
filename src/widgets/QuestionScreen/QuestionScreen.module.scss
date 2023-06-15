@@ -4,12 +4,12 @@
 	display: grid;
 	width: 100%;
 	background-color: var(--black-5);
-	height: calc(var(--vh, 1vh) * 100);
+	max-height: 100vh;
+	height: min(calc(var(--vh, 1vh) * 100), 100vh);
 	margin: 0;
 
 	@include if-mobile {
-		grid-template-rows: 1fr 1fr;
-		align-content: end;
+		grid-template-rows: 1fr auto;
 		padding: 1.5em 0;
 	}
 
@@ -51,6 +51,7 @@
 
 	@include if-mobile {
 		text-align: center;
+		text-wrap: balance;
 	}
 
 	@include screen-m {

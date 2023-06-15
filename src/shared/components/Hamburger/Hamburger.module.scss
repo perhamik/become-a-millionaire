@@ -59,7 +59,7 @@
 	height: 100%;
 
 	background-color: var(--white-100);
-	padding: min(64px, 10vw) 8px 32px;
+	//padding: min(64px, 10vw) 8px 32px;
 
 	@include if-tablet {
 		display: grid;
@@ -67,9 +67,5 @@
 		inset: 0;
 		z-index: 10;
 		background-color: var(--black-5);
-		& > ul {
-			justify-content: flex-end;
-			gap: clamp(8px, 2.5vh, 24px);
-		}
 	}
 }

@@ -42,25 +42,27 @@
 .container {
 	&[data-size='sm'] {
 		--child-size: 14px;
-		--side-border-left: -1.3em;
-		--side-border-right: 1.7em;
+		--side-border-left: -1em;
+		--side-border-right: 1.5em;
 
 		@include if-mobile {
 			--child-size: 9pt;
+			--side-border-left: -1em;
+			--side-border-right: 1.5em;
 		}
 
 		.diamond {
-			min-width: 240px;
+			width: 80%;
 			max-width: 240px;
 
 			& > :first-child {
-				padding: 8px 24px;
+				padding: 6px 24px;
 			}
 		}
 	}
 
 	.diamond {
-		width: 70%;
+		width: 80%;
 
 		& > * {
 			width: 100%;
@@ -70,14 +72,14 @@
 
 .container {
 	--child-size: 26px;
-	--side-border-left: -1em;
-	--side-border-right: 1.2em;
+	--side-border-left: -1.2em;
+	--side-border-right: 1.5em;
 
 	@include if-mobile {
 		--child-size: 20px;
 
-		--side-border-left: -0.9em;
-		--side-border-right: 1.2em;
+		--side-border-left: -1.25em;
+		--side-border-right: 1.5em;
 	}
 
 	display: flex;
@@ -171,13 +173,17 @@
 
 	& > :first-child {
 		position: relative;
-		padding: 0.75em 0.5em;
+		padding: 1.1em 0.5em;
 		border-width: 1px 0;
 		border-style: solid;
 		border-color: var(--black-40);
 		z-index: 10;
 		margin: 0 3px;
 		background-color: var(--white-100);
+
+		@include if-mobile {
+			padding: 1.25em 0.5em;
+		}
 	}
 
 	&::before,
