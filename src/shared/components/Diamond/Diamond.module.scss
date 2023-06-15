@@ -26,6 +26,20 @@
 	}
 }
 
+@mixin specialTransition() {
+	& {
+		& > .diamond {
+			&,
+			& > :first-child,
+			&::before,
+			&::after {
+				transition-duration: 1200ms;
+				transition-timing-function: cubic-bezier(0.2, 0.9, 0.5, -1);
+			}
+		}
+	}
+}
+
 @mixin changeBG($color) {
 	& {
 		& > .diamond {
@@ -92,17 +106,13 @@
 	font-size: 10px;
 	cursor: pointer;
 
-	&::before,
-	&::after {
-		transition: background-color 250ms linear;
-	}
-
+	&,
 	& > .diamond {
 		&,
 		& > :first-child,
 		&::before,
 		&::after {
-			transition: border-color 250ms linear, color 250ms linear;
+			transition: 320ms linear;
 		}
 	}
 
@@ -128,8 +138,14 @@
 		right: 0;
 	}
 
-	&:hover {
-		@include applyColor(var(--orange-100));
+	&[data-state='default'] {
+		&:hover {
+			@include applyColor(var(--orange-100));
+		}
+	}
+
+	&[data-state='inactive'] {
+		pointer-events: none;
 	}
 
 	&[data-state='disabled'] {
@@ -151,11 +167,13 @@
 	&[data-state='correct'] {
 		@include applyColor(var(--green-100));
 		@include changeBG(var(--green-5));
+		// @include specialTransition();
 	}
 
 	&[data-state='wrong'] {
 		@include applyColor(var(--red-100));
 		@include changeBG(var(--red-5));
+		// @include specialTransition();
 	}
 }
 

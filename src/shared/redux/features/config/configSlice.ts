@@ -4,9 +4,9 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
 import {IQuestion} from '@/src/shared/types'
 
-type Earning = Array<number>
-type Question = IQuestion & {answered: boolean}
-type Questions = Array<Question>
+export type Earning = Array<number>
+export type Question = IQuestion & {answered: boolean}
+export type Questions = Array<Question>
 
 export type TConfig = {
 	earning: Earning

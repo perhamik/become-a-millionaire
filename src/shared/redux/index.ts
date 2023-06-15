@@ -18,7 +18,12 @@ export {
 	setFinalPage,
 } from './features/counter/counterSlice'
 export {configSlice, fetchConfig} from './features/config/configSlice'
-export type {TConfig} from './features/config/configSlice'
+export type {
+	TConfig,
+	Earning,
+	Question,
+	Questions,
+} from './features/config/configSlice'
 
 export const getConfig = () => store.dispatch(fetchConfig())
 

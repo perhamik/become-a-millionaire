@@ -14,6 +14,10 @@
 		align-content: end;
 		grid-auto-rows: 72px;
 	}
+
+	&[data-disabled-state='true'] {
+		pointer-events: none;
+	}
 }
 
 .item {

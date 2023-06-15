@@ -5,6 +5,7 @@ import {useMemo, useState} from 'react'
 import {Answers} from '@/src/features/Answers'
 import {Earn} from '@/src/features/Earn'
 import {Hamburger} from '@/src/shared/components'
+import {DiamondState} from '@/src/shared/components/Diamond'
 import {
 	RootState,
 	increment,
@@ -15,11 +16,24 @@ import {
 } from '@/src/shared/redux'
 
 import styles from './QuestionScreen.module.scss'
+import {
+	TAnswer,
+	checkCorrectAnswer,
+	delay,
+	setAnswerWrongOrCorrect,
+	setCorrectAnswer,
+	setDefaultAnswerStates,
+	setSelectedAnswerState,
+	updateQuestionsList,
+} from './utils'
 
 export const QuestionScreen = () => {
 	const dispatch = useAppDispatch()
 	const config = useAppSelector((state: RootState) => state.config.data)
 	const [questions, setQuestions] = useState(() => config.questions)
+	const [answersStates, setAnswersState] = useState<Array<DiamondState>>(() =>
+		Array(questions.at(0)?.answers.length || 4).fill('default'),
+	)
 
 	const question = useMemo(
 		() =>
@@ -27,23 +41,33 @@ export const QuestionScreen = () => {
 		[questions],
 	)
 
-	const answerClickHanlder = (answ: string) => {
+	const answerClickHanlder = async (answ: TAnswer, id: number) => {
 		if (!question || !answ) return
 
-		const currentAnswer = question.answers.find((item) => item.title === answ)
-		if (!currentAnswer) return
+		const correctIndex = question.answers.findIndex((item) => item.isCorrect)
+		const isCorrect =
+			checkCorrectAnswer(answ.text, question.answers) && id === correctIndex
 
-		if (currentAnswer.isCorrect) {
-			const leftQuestions = questions.filter(
-				(item) => item.title !== question.title,
-			)
-			dispatch(increment())
-			setQuestions(() => leftQuestions)
+		setSelectedAnswerState(setAnswersState, id)
+		await delay(1000)
 
-			!leftQuestions.length && dispatch(setFinalPage())
+		setAnswerWrongOrCorrect(setAnswersState, id, isCorrect)
+
+		await delay(2500)
+
+		if (!isCorrect) {
+			setCorrectAnswer(setAnswersState, correctIndex)
+			await delay(2500)
+			dispatch(setFinalPage())
+			return
 		}
 
-		!currentAnswer.isCorrect && dispatch(setFinalPage())
+		const leftQuestions = updateQuestionsList(questions, question)
+		setDefaultAnswerStates(setAnswersState)
+		dispatch(increment())
+		setQuestions(() => leftQuestions)
+
+		!leftQuestions.length && dispatch(setFinalPage())
 	}
 
 	if (!question) {
@@ -61,7 +85,9 @@ export const QuestionScreen = () => {
 			</section>
 			<Answers
 				selectEvent={answerClickHanlder}
-				list={question.answers.map((answer) => answer.title)}
+				list={question.answers.map((answer, _id) => {
+					return {state: answersStates.at(_id) || 'default', text: answer.title}
+				})}
 			/>
 			<aside className={styles.aside}>
 				<Earn list={config.earning} />

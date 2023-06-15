@@ -13,6 +13,7 @@
 	font-size: 14px;
 	border-radius: 8px;
 	padding: 1em;
+	transition: 320ms linear;
 
 	@include screen-m {
 		font-size: 20px;
